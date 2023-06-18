@@ -1,1 +1,2 @@
-console.log('Whats the weather like?')
+console.log(`How's the weather?`)
+
