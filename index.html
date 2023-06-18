@@ -5,20 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Weather App</title>
+    <title>Drizzle</title>
 </head>
 <body>
-    <h1>Weather app</h1>
+    <div id="title">
+        <h2>Drizzle.</h2>
+    </div>
     <form action="" id="form">
-        <div>
-            <label for="location">Enter your location</label>
-            <input type="text" id="location" name="location" placeholder="london..." required>
-
-            <button type="submit" id="submit">Get weather</button>
+        <div id="formContainer">
+            <label for="location" id="locationLabel"><strong>Enter a location...</strong></label>
+            <div id="input-and-submit">
+                <input type="text" id="location" name="location" placeholder="Example: London" required>
+                <button type="submit" id="submit">Show</button>
+            </div>
         </div>
     </form>
 
-    <div id="results"></div>
+    <div id="resultsContainer">
+
+    </div>
 </body>
 <script src="main.js" defer></script>
 </html>
