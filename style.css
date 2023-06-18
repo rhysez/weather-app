@@ -31,7 +31,7 @@ body {
 #title {
     display: flex;
     justify-content: center;
-    font-size: 6rem;
+    font-size: 7rem;
     margin-bottom: 3rem;
 }
 
@@ -52,6 +52,14 @@ body {
 
 .mainResult {
     animation: fadeIn 1s;
+}
+
+#resultsCondition {
+    display: flex;
+    justify-content: center;
+    font-size: clamp(2rem, 3rem, 4rem);
+    gap: 2rem;
+    margin-top: 4rem;
 }
 
 #resultsContainer {
