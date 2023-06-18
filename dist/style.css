@@ -5,6 +5,7 @@
     --text-color: white;
     --search-color: rgb(102, 102, 102);
     --hover-submit: rgb(117, 154, 235);
+    --results-on: rgb(83, 129, 230, 0.5);
 }
 
 @keyframes fadeIn {
@@ -17,7 +18,8 @@ html {
 }
 
 body {
-    padding: 0;
+    padding-left: 5%;
+    padding-right: 5%;
     font-family: 'Nunito', sans-serif;
     font-size: 1.5rem;
     background: var(--default-background);
@@ -29,29 +31,72 @@ body {
 #title {
     display: flex;
     justify-content: center;
-    font-size: 4rem;
+    font-size: 6rem;
+    margin-bottom: 3rem;
 }
 
 #formContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+}
+
+#resultsMain {
+    display: flex;
+    justify-content: center;
+    font-size: clamp(2rem, 3rem, 4rem);
     gap: 2rem;
+    margin-top: 4rem;
+}
+
+.mainResult {
+    animation: fadeIn 1s;
 }
 
 #resultsContainer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60rem;
+    gap: 1rem;
 }
 
-#results {
+#result1 {
     font-family: 'Nunito', sans-serif;
-    font-weight: bold;
     font-size: clamp(2rem, 3rem, 4rem);
-    animation: fadeIn 2s;
     text-align: center;
+    background: var(--results-on);
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 85%;
+    animation: fadeIn 1s
+}
+
+#result2 {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(2rem, 3rem, 4rem);
+    text-align: center;
+    background: var(--results-on);
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 85%;
+    animation: fadeIn 2.5s
+}
+
+#result3 {
+    font-family: 'Nunito', sans-serif;
+    font-size: clamp(2rem, 3rem, 4rem);
+    text-align: center;
+    background: var(--results-on);
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 85%;
+    animation: fadeIn 4s
 }
 
 #submit {
@@ -63,6 +108,7 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--search-color);
+    transition: all ease-in-out 0.15s;
 }
 
 #submit:hover {
@@ -78,7 +124,13 @@ body {
     font-weight: bold;
     font-size: 1.5rem;
     color: var(--search-color);
+    background-color: rgb(255, 255, 255, 0.5);
     text-align: center;
+    transition: all ease-in-out 0.15s;
+}
+
+#location:hover {
+    background-color: white;
 }
 
 #locationLabel {
