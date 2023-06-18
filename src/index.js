@@ -1,3 +1,7 @@
+const form = document.getElementById('form');
+const location = document.getElementById('location');
+const results = document.getElementById('results');
+
 function Weather(location, temperature) {
   this.location = location;
   this.temperature = temperature;
@@ -15,16 +19,17 @@ async function fetchWeather(searchValue) {
 
   let weatherLocation = weatherData.location.name;
   let weatherTemp = weatherData.current.temp_c;
-
   let weather = new Weather(weatherLocation, weatherTemp);
 
   console.log(weather);
   console.log(weather.announce);
 }
 
-fetchWeather("truro").catch((e) => {
-  console.log(e);
-});
+//fetchWeather("truro").catch((e) => {
+  //console.log(e);
+//});
 
-// need to transfer the json data into an object
-// object should only contain the data I need for the app
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    fetchWeather(location.value);
+})
