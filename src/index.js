@@ -1,11 +1,11 @@
 const form = document.getElementById('form');
 const location = document.getElementById('location');
-const results = document.getElementById('results');
+const resultsContainer = document.getElementById('resultsContainer');
 
 function Weather(location, temperature) {
   this.location = location;
   this.temperature = temperature;
-  this.announce = `The temperature in ${location} is ${temperature}` + "°";
+  this.infoCelcius = `The temperature in ${location} is ${temperature}` + "°.";
 }
 
 // takes search value and awaits fetching of data
@@ -23,13 +23,15 @@ async function fetchWeather(searchValue) {
 
   console.log(weather);
   console.log(weather.announce);
-}
 
-//fetchWeather("truro").catch((e) => {
-  //console.log(e);
-//});
+  const results = document.createElement('div');
+  results.id = "results";
+  resultsContainer.appendChild(results);
+
+  results.textContent = weather.infoCelcius;
+}
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    fetchWeather(location.value);
+    fetchWeather(location.value).catch(e => { console.log(e) }); 
 })
