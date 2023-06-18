@@ -4,8 +4,6 @@ const resultsMain = document.getElementById('resultsMain');
 const resultsCondition = document.getElementById('resultsCondition');
 const resultsContainer = document.getElementById('resultsContainer');
 
-let weatherResults = []
-
 const mainResultLocation = document.createElement('div');
 const mainResultTemperature = document.createElement('div');
 const mainResultCondition = document.createElement('div');
@@ -13,6 +11,8 @@ const mainResultCondition = document.createElement('div');
 const resultFeelsLike = document.createElement('div');
 const resultHumidity = document.createElement('div');
 const resultWind = document.createElement('div');
+
+let weatherResults = []
 
 function Weather(location, temperature, feelsLikeCelcius, humidity, wind, condition) {
   this.location = location;
@@ -39,10 +39,11 @@ async function fetchWeather(searchValue) {
 
   resultsMain.appendChild(mainResultLocation);
   resultsMain.appendChild(mainResultTemperature);
-  resultsCondition.appendChild(mainResultCondition);
+  resultsMain.appendChild(mainResultCondition);
 
   mainResultLocation.classList.add('mainResult');
   mainResultTemperature.classList.add('mainResult');
+  mainResultTemperature.id = 'mainTemperature';
   mainResultCondition.classList.add('mainResult');
 
   resultFeelsLike.id = "result1";
@@ -70,15 +71,36 @@ async function fetchWeather(searchValue) {
   }
 }
 
-function clearResultsContainer(){
+// need to program buttons to change temperature values
+function appendTempButtons(){
+  const tempButtons = document.getElementById('tempButtons');
+  const fTemp = document.createElement('button');
+  const cTemp = document.createElement('button');
+
+  fTemp.id = 'fTemp';
+  cTemp.id = 'cTemp';
+
+  fTemp.textContent = 'F°';
+  cTemp.textContent = 'C°';
+
+  tempButtons.appendChild(fTemp);
+  tempButtons.appendChild(cTemp);
+}
+
+function clear(){
     weatherResults = [];
     resultFeelsLike.textContent = "";
     resultHumidity.textContent = "";
     resultWind.textContent = "";
+
+    while (tempButtons.firstChild) {
+      tempButtons.removeChild(tempButtons.lastChild);
+    }
 }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     fetchWeather(location.value).catch(e => { console.log(e) }); 
-    clearResultsContainer();
+    clear();
+    appendTempButtons();
 })

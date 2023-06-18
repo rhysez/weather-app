@@ -45,13 +45,23 @@ body {
 #resultsMain {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     font-size: clamp(2rem, 3rem, 4rem);
     gap: 2rem;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .mainResult {
     animation: fadeIn 1s;
+}
+
+#mainTemperature {
+    font-size: clamp(6rem, 7rem, 8rem);
+    background: var(--results-on);
+    border-radius: 50%;
+    border: solid 3px white;
+    padding: 1rem;
 }
 
 #resultsCondition {
@@ -105,6 +115,29 @@ body {
     padding: 1rem;
     width: 85%;
     animation: fadeIn 4s
+}
+
+#fTemp,
+#cTemp {
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--search-color);
+    transition: all ease-in-out 0.15s;
+    margin-top: 1rem;
+    background: none;
+}
+
+#fTemp:hover,
+#cTemp:hover {
+    color: var(--text-color);
+}
+
+#tempButtons {
+    display: flex;
+    gap: 5rem;
 }
 
 #submit {
