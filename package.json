@@ -1,0 +1,24 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "A simple weather application created as part of The Odin Project's full stack JavaScript curriculum. This project teaches proper use of asynchronous code, i.e promises and async/await functions. It also uses WeatherAPI to fetch data and display it to the user.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhysez/weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhysez/weather-app/issues"
+  },
+  "homepage": "https://github.com/rhysez/weather-app#readme",
+  "devDependencies": {
+    "webpack": "^5.87.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
