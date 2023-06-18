@@ -1,6 +1,7 @@
 const form = document.getElementById('form');
 const location = document.getElementById('location');
 const resultsMain = document.getElementById('resultsMain');
+const resultsCondition = document.getElementById('resultsCondition');
 const resultsContainer = document.getElementById('resultsContainer');
 
 let weatherResults = []
@@ -38,7 +39,7 @@ async function fetchWeather(searchValue) {
 
   resultsMain.appendChild(mainResultLocation);
   resultsMain.appendChild(mainResultTemperature);
-  resultsMain.appendChild(mainResultCondition);
+  resultsCondition.appendChild(mainResultCondition);
 
   mainResultLocation.classList.add('mainResult');
   mainResultTemperature.classList.add('mainResult');
