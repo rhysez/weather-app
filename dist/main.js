@@ -3,15 +3,30 @@ var __webpack_exports__ = {};
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-// takes search value, awaits fetch, takes json and console logs it 
+function Weather(location, temperature){
+    this.location = location;
+    this.temperature = temperature;
+    this.announce = `The temperature in ${location} is ${temperature}` + '°';
+}
+
+// takes search value and awaits fetching of data
+// creates a weather object with key information
+// logs the object
 async function fetchWeather(searchValue){
     const url = 'https://api.weatherapi.com/v1/current.json?key=9e73d1b2999849e59b0205612231706&q=';
     const response = await fetch(url + searchValue, {mode: 'cors'});
     const weatherData = await response.json();
     console.log(weatherData);
+
+    let weatherLocation = weatherData.location.name;
+    let weatherTemp = weatherData.current.temp_c;
+
+    let weather = new Weather(weatherLocation, weatherTemp);
+
+    console.log(weather);
+    console.log(weather.announce);
 }
 
-// catches error upon recieving json
 fetchWeather('truro').catch(e => {
     console.log(e)
 })
@@ -20,4 +35,4 @@ fetchWeather('truro').catch(e => {
 // object should only contain the data I need for the app
 /******/ })()
 ;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsIm1hcHBpbmdzIjoiOzs7OztBQUFBO0FBQ0E7QUFDQTtBQUNBLHFEQUFxRCxhQUFhO0FBQ2xFO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0E7QUFDQSxDQUFDOztBQUVEO0FBQ0EseUQiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly93ZWF0aGVyLWFwcC8uL3NyYy9pbmRleC5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyB0YWtlcyBzZWFyY2ggdmFsdWUsIGF3YWl0cyBmZXRjaCwgdGFrZXMganNvbiBhbmQgY29uc29sZSBsb2dzIGl0IFxuYXN5bmMgZnVuY3Rpb24gZmV0Y2hXZWF0aGVyKHNlYXJjaFZhbHVlKXtcbiAgICBjb25zdCB1cmwgPSAnaHR0cHM6Ly9hcGkud2VhdGhlcmFwaS5jb20vdjEvY3VycmVudC5qc29uP2tleT05ZTczZDFiMjk5OTg0OWU1OWIwMjA1NjEyMjMxNzA2JnE9JztcbiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKHVybCArIHNlYXJjaFZhbHVlLCB7bW9kZTogJ2NvcnMnfSk7XG4gICAgY29uc3Qgd2VhdGhlckRhdGEgPSBhd2FpdCByZXNwb25zZS5qc29uKCk7XG4gICAgY29uc29sZS5sb2cod2VhdGhlckRhdGEpO1xufVxuXG4vLyBjYXRjaGVzIGVycm9yIHVwb24gcmVjaWV2aW5nIGpzb25cbmZldGNoV2VhdGhlcigndHJ1cm8nKS5jYXRjaChlID0+IHtcbiAgICBjb25zb2xlLmxvZyhlKVxufSlcblxuLy8gbmVlZCB0byB0cmFuc2ZlciB0aGUganNvbiBkYXRhIGludG8gYW4gb2JqZWN0XG4vLyBvYmplY3Qgc2hvdWxkIG9ubHkgY29udGFpbiB0aGUgZGF0YSBJIG5lZWQgZm9yIHRoZSBhcHAiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWFpbi5qcyIsIm1hcHBpbmdzIjoiOzs7OztBQUFBO0FBQ0E7QUFDQTtBQUNBLDBDQUEwQyxVQUFVLEtBQUssWUFBWTtBQUNyRTs7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EscURBQXFELGFBQWE7QUFDbEU7QUFDQTs7QUFFQTtBQUNBOztBQUVBOztBQUVBO0FBQ0E7QUFDQTs7QUFFQTtBQUNBO0FBQ0EsQ0FBQzs7QUFFRDtBQUNBLHlEIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vd2VhdGhlci1hcHAvLi9zcmMvaW5kZXguanMiXSwic291cmNlc0NvbnRlbnQiOlsiZnVuY3Rpb24gV2VhdGhlcihsb2NhdGlvbiwgdGVtcGVyYXR1cmUpe1xuICAgIHRoaXMubG9jYXRpb24gPSBsb2NhdGlvbjtcbiAgICB0aGlzLnRlbXBlcmF0dXJlID0gdGVtcGVyYXR1cmU7XG4gICAgdGhpcy5hbm5vdW5jZSA9IGBUaGUgdGVtcGVyYXR1cmUgaW4gJHtsb2NhdGlvbn0gaXMgJHt0ZW1wZXJhdHVyZX1gICsgJ8KwJztcbn1cblxuLy8gdGFrZXMgc2VhcmNoIHZhbHVlIGFuZCBhd2FpdHMgZmV0Y2hpbmcgb2YgZGF0YVxuLy8gY3JlYXRlcyBhIHdlYXRoZXIgb2JqZWN0IHdpdGgga2V5IGluZm9ybWF0aW9uXG4vLyBsb2dzIHRoZSBvYmplY3RcbmFzeW5jIGZ1bmN0aW9uIGZldGNoV2VhdGhlcihzZWFyY2hWYWx1ZSl7XG4gICAgY29uc3QgdXJsID0gJ2h0dHBzOi8vYXBpLndlYXRoZXJhcGkuY29tL3YxL2N1cnJlbnQuanNvbj9rZXk9OWU3M2QxYjI5OTk4NDllNTliMDIwNTYxMjIzMTcwNiZxPSc7XG4gICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaCh1cmwgKyBzZWFyY2hWYWx1ZSwge21vZGU6ICdjb3JzJ30pO1xuICAgIGNvbnN0IHdlYXRoZXJEYXRhID0gYXdhaXQgcmVzcG9uc2UuanNvbigpO1xuICAgIGNvbnNvbGUubG9nKHdlYXRoZXJEYXRhKTtcblxuICAgIGxldCB3ZWF0aGVyTG9jYXRpb24gPSB3ZWF0aGVyRGF0YS5sb2NhdGlvbi5uYW1lO1xuICAgIGxldCB3ZWF0aGVyVGVtcCA9IHdlYXRoZXJEYXRhLmN1cnJlbnQudGVtcF9jO1xuXG4gICAgbGV0IHdlYXRoZXIgPSBuZXcgV2VhdGhlcih3ZWF0aGVyTG9jYXRpb24sIHdlYXRoZXJUZW1wKTtcblxuICAgIGNvbnNvbGUubG9nKHdlYXRoZXIpO1xuICAgIGNvbnNvbGUubG9nKHdlYXRoZXIuYW5ub3VuY2UpO1xufVxuXG5mZXRjaFdlYXRoZXIoJ3RydXJvJykuY2F0Y2goZSA9PiB7XG4gICAgY29uc29sZS5sb2coZSlcbn0pXG5cbi8vIG5lZWQgdG8gdHJhbnNmZXIgdGhlIGpzb24gZGF0YSBpbnRvIGFuIG9iamVjdFxuLy8gb2JqZWN0IHNob3VsZCBvbmx5IGNvbnRhaW4gdGhlIGRhdGEgSSBuZWVkIGZvciB0aGUgYXBwIl0sIm5hbWVzIjpbXSwic291cmNlUm9vdCI6IiJ9
