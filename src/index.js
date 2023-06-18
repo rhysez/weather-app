@@ -2,6 +2,9 @@ const form = document.getElementById('form');
 const location = document.getElementById('location');
 const resultsContainer = document.getElementById('resultsContainer');
 
+let weatherResults = []
+const results = document.createElement('div');
+
 function Weather(location, temperature) {
   this.location = location;
   this.temperature = temperature;
@@ -21,17 +24,21 @@ async function fetchWeather(searchValue) {
   let weatherTemp = weatherData.current.temp_c;
   let weather = new Weather(weatherLocation, weatherTemp);
 
-  console.log(weather);
-  console.log(weather.announce);
-
-  const results = document.createElement('div');
   results.id = "results";
   resultsContainer.appendChild(results);
+  console.log(weather);
+  weatherResults.push(weather);
 
-  results.textContent = weather.infoCelcius;
+  results.textContent = weatherResults[0].infoCelcius;
+}
+
+function clearResults(){
+    weatherResults = [];
+    results.textContent = "";
 }
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     fetchWeather(location.value).catch(e => { console.log(e) }); 
+    clearResults();
 })
