@@ -4,8 +4,9 @@
     --default-background: linear-gradient(rgb(107, 148, 238), rgb(208, 223, 253));
     --text-color: white;
     --search-color: rgb(102, 102, 102);
+    --temp-button: rgb(189, 189, 189);
     --hover-submit: rgb(117, 154, 235);
-    --results-on: rgb(83, 129, 230, 0.5);
+    --results-on: rgba(83, 230, 174, 0.5);
 }
 
 @keyframes fadeIn {
@@ -22,7 +23,7 @@ body {
     padding-right: 5%;
     font-family: 'Nunito', sans-serif;
     font-size: 1.5rem;
-    background: var(--default-background);
+    background-image: url('images/northernlights.jpg');
     color: var(--text-color);
     min-height: 100vh;
     transition: all .5s ease-in-out;
@@ -121,7 +122,7 @@ body {
     font-weight: bold;
     font-size: 2rem;
     cursor: pointer;
-    color: var(--search-color);
+    color: var(--temp-button);
     transition: all ease-in-out 0.15s;
     margin-top: 1rem;
     background: none;
