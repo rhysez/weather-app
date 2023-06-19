@@ -14,9 +14,10 @@ const resultWind = document.createElement('div');
 
 let weatherResults = []
 
-function Weather(location, temperature, feelsLikeCelcius, humidity, wind, condition) {
+function Weather(location, temperature, temperatureF, feelsLikeCelcius, humidity, wind, condition) {
   this.location = location;
   this.temperature = temperature;
+  this.temperatureF = temperatureF;
   this.feelsLikeCelcius = feelsLikeCelcius;
   this.humidity = humidity;
   this.wind = wind;
@@ -31,11 +32,12 @@ async function fetchWeather(searchValue) {
 
   let weatherLocation = weatherData.location.name;
   let weatherTemp = weatherData.current.temp_c;
+  let weatherTempF = weatherData.current.temp_f;
   let weatherFeelsLikeCelcius = weatherData.current.feelslike_c; 
   let weatherHumidity = weatherData.current.humidity;
   let weatherWind = weatherData.current.wind_mph;
   let weatherCondition = weatherData.current.condition.text;
-  let weather = new Weather(weatherLocation, weatherTemp, weatherFeelsLikeCelcius, weatherHumidity, weatherWind, weatherCondition);
+  let weather = new Weather(weatherLocation, weatherTemp, weatherTempF, weatherFeelsLikeCelcius, weatherHumidity, weatherWind, weatherCondition);
 
   resultsMain.appendChild(mainResultLocation);
   resultsMain.appendChild(mainResultTemperature);
@@ -57,18 +59,28 @@ async function fetchWeather(searchValue) {
   weatherResults.push(weather);
 
   mainResultLocation.textContent = weatherResults[0].location;
-  mainResultTemperature.textContent = weatherResults[0].temperature + "°";
+  mainResultTemperature.textContent = weatherResults[0].temperature + "°C";
   mainResultCondition.textContent = weatherResults[0].condition;
 
-  resultFeelsLike.textContent = `It feels like ${weatherResults[0].feelsLikeCelcius}°`;
+  resultFeelsLike.textContent = `It feels like ${weatherResults[0].feelsLikeCelcius}°C`;
   resultHumidity.textContent = `Humidity: ${weatherResults[0].humidity}%`
   resultWind.textContent = `Wind speed: ${weatherResults[0].wind} mph`
 
-  if (weatherResults[0].temperature <= 10){
-    mainResultTemperature.style.color = 'blue'
-  } else if (weatherResults[0].temperature >= 10){
-    mainResultTemperature.style.color = 'yellow'
-  }
+  const mainTemperature = document.getElementById('mainTemperature')
+  const fTempButton = document.getElementById('fTemp');
+  const cTempButton = document.getElementById('cTemp');
+
+  fTempButton.addEventListener('click', () => {
+    mainTemperature.textContent = weatherResults[0].temperatureF + "°F"; // returns undefined
+    resultFeelsLike.textContent = `It feels like ${weatherResults[0].temperatureF}°F` // returns undefined
+  })
+
+  cTempButton.addEventListener('click', () => {
+    mainTemperature.textContent = weatherResults[0].temperature + "°C";
+    resultFeelsLike.textContent = `It feels like ${weatherResults[0].feelsLikeCelcius}°C`
+  })
+
+  console.log(weatherResults[0]);
 }
 
 // need to program buttons to change temperature values
